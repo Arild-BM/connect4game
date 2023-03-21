@@ -1,7 +1,7 @@
 import {useState} from "react"
 import Header from "./components/Header"
 
-let color = false
+let color = 1
 
 
 function App() {
@@ -13,9 +13,18 @@ function App() {
                                     [0, 0, 0, 0, 0, 0, 0],
                                     [0, 0, 0, 0, 0, 0, 0],
                                     [0, 0, 0, 0, 0, 0, 0]])
-  
+  const [winner, setWinner] = useState("")
   const x = [1,1,1,1,1,1,1]
   const y = [1,1,1,1,1,1]
+
+  function won(x, y, color) {
+    if (color === 1) {
+      // if (fill[y][x]===1)
+    } else {
+
+    }
+  }
+
 
   return (
     <div>
@@ -41,10 +50,10 @@ function App() {
                         onClick = {() => {
                           if (((indexY === 5) && !fill[indexY][indexX]) || (((fill[indexY+1][indexX] > 0) && !fill[indexY][indexX]))) {
                             let temp = fill
-                            temp[indexY][indexX] = color ? 1 : 2
-                            color = !color
+                            temp[indexY][indexX] = color
                             setFill([...temp])
-                            console.log(fill)
+                            won(indexX, indexY, color)
+                            color === 1 ? color = 2 : color = 1
                           }
                         }}>
                     <div className = "white-mask"></div>
