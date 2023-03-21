@@ -1,13 +1,138 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  /* box-sizing: border-box; */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --color-background-light: #7945FF;
+  --color-background-dark: #5C2DD5;
+  --color-text: whitesmoke;
+  --color-a: #ff6584;
+  --color-b: #fdcd69;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background-light);
+}
+
+header {
+  height: 188px;
+  display: flex;
+  justify-content: center;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+
+.button {
+  margin: 0px;
+  text-align: center;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.5em;
+  width: 7em;
+  background-color: var(--color-background-dark);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.ball {
+  width: 1.1em;
+  height: 1.1em;
+  border: 2px black solid;
+  margin: 2px;
+  border-radius: 50%;
+}
+
+.ball-a {
+  background-color: var(--color-a);
+}
+
+.ball-b {
+  background-color: var(--color-b);
+}
+
+.line {
+  display: flex;
+}
+
+main {
+  height: 60vh;
+}
+
+.main-page {
+  display: flex;
+  justify-content: center;
+}
+
+.main-frame {
+  border: 2px black solid;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+}
+
+.circle {
+  position: relative;
+  width: 4em;                   /* the div size */
+  height: 4em;                  /* the div size */
+  overflow: hidden;               /* hide the excess of the mask border */
+  background-color: transparent;
+}
+
+.inner-circle {
+  position: absolute;
+  top: -1em;                     /* minus half the div size */
+  left: -1em;                    /* minus half the div size */
+  width: 3em;                   /* the div size */
+  height: 3em;                  /* the div size */
+  background-color: transparent;
+  border-radius: 3em;           /* the div size */
+  border: 1.5em solid white;     /* half the div size */
+  pointer-events: none;           /* send mouse events beneath this layer */
+}
+
+.blue {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  margin: 8px;
+  background-color: var(--color-background-light);
+  position: absolute;
+  top: 131px;
+}
+
+.circle-a {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  margin: 8px;
+  background-color: var(--color-a);
+  position: absolute;
+  top: 131px;
+}
+
+.circle-fall {
+  top: 510px;
+  animation: movedown 1s ease-in;
+}
+
+@keyframes movedown {
+  from {top: 131px;}
+  to {top: 510px;}
+}
+
+footer {
+  width: 100vw;
+  height: 20vh;
+  background-color: var(--color-background-dark);
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
 }
