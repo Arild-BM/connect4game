@@ -87,7 +87,15 @@ main {
   background-color: transparent;
 }
 
-.inner-circle {
+.red {
+  background-color: var(--color-a);
+}
+
+.yellow {
+  background-color: var(--color-b);
+}
+
+.white-mask {
   position: absolute;
   top: -1em;                     /* minus half the div size */
   left: -1em;                    /* minus half the div size */
