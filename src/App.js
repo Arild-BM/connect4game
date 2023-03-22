@@ -40,7 +40,7 @@ function App() {
     if (check4lines(x, temp) > 0) {
       return check4lines(x, temp)
     }
-const a = 4
+
     // Check for diagonal 4 on line
     console.log(x+y)
     if ((x+y >= 3) && (x+y <= 8)) {
