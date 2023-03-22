@@ -19,6 +19,15 @@ function App() {
 
   function won(x, y, color) {
     
+    function check4lines(x, array) {
+      if (((array[x]===color) && (array[x+1]===color) && (array[x+2]===color) && (array[x+3]===color)) ||
+        ((array[x+1]===color) && (array[x+2]===color) && (array[x+3]===color) && (array[x+4]===color)) ||
+        ((array[x+2]===color) && (array[x+3]===color) && (array[x+4]===color) && (array[x+5]===color)) ||
+        ((array[x+3]===color) && (array[x+4]===color) && (array[x+5]===color) && (array[x+6]===color))) {
+          return color
+        }
+    }
+    
     // Check for vertical 4 on line
     if (y<=2) {
       if ((fill[y][x]===color) && (fill[y+1][x]===color) && (fill[y+2][x]===color) && (fill[y+3][x]===color)) {
@@ -28,27 +37,28 @@ function App() {
 
     // Check for horizontal 4 on line
     let temp = [0, 0, 0, ...fill[y], 0, 0, 0]
-    if (((temp[x]===color) && (temp[x+1]===color) && (temp[x+2]===color) && (temp[x+3]===color)) ||
-      ((temp[x+1]===color) && (temp[x+2]===color) && (temp[x+3]===color) && (temp[x+4]===color)) ||
-      ((temp[x+2]===color) && (temp[x+3]===color) && (temp[x+4]===color) && (temp[x+5]===color)) ||
-      ((temp[x+3]===color) && (temp[x+4]===color) && (temp[x+5]===color) && (temp[x+6]===color))) {
-        return color
-      }
-    
+    if (check4lines(x, temp) > 0) {
+      return check4lines(x, temp)
+    }
+
     // Check for diagonal 4 on line
+    console.log(x+y)
     if ((x+y >= 3) && (x+y <= 8)) {
+      console.log(x+y)
       temp = [0, 0, 0]
       for (let i = (x+y < 5 ? x+y : 5) ; i >= 0 ; i-- ) {
-        console.log(i, x+y-i)
         temp.push(fill[i][x+y-i])
-        if ((x+y > 6) && (x+y-i === 6)) {
+        console.log(fill[i][x+y-i])
+        if (x+y-i === 6) {
           break
         }
       }
       temp.push(...[0, 0, 0])
       console.log(temp)
+      if (check4lines(x, temp) > 0) {
+        return check4lines(x, temp)
+      }
     }
-
   }
 
 
@@ -62,7 +72,7 @@ function App() {
             <div key = {indexX}>
               {y.map((y, indexY) =>  (
                 <div key = {indexY}>
-                  <div className = {mouseover ? "circle-a" : fall ? "circle-a circle-fall" : "blue"}
+                  <div key ="a" className = {mouseover ? "circle-a" : fall ? "circle-a circle-fall" : "blue"}
                       onClick = {() => {
                         setFall(true)
                         setMouseover(false)
@@ -72,14 +82,14 @@ function App() {
                       onMouseLeave = {() => setMouseover(false)}
                       >
                   </div>
-                  <div className = {fill[indexY][indexX] ? fill[indexY][indexX] === 1 ? "circle yellow" : "circle red" : "circle"}
+                  <div key ="b" className = {fill[indexY][indexX] ? fill[indexY][indexX] === 1 ? "circle yellow" : "circle red" : "circle"}
                         onClick = {() => {
                           if (((indexY === 5) && !fill[indexY][indexX]) || (((indexY<5) && (fill[indexY+1][indexX]) && !fill[indexY][indexX]))) {
                             temp = [...fill]
                             temp[indexY][indexX] = color
                             setFill([...temp])
                             
-                            console.log(won(indexX, indexY, color))
+                            won(indexX, indexY, color)
                             color === 1 ? color = 2 : color = 1
                           }
                         }}>
