@@ -18,12 +18,15 @@ function App() {
   const y = [1,1,1,1,1,1]
 
   function won(x, y, color) {
+    
+    // Check for vertical 4 on line
     if (y<=2) {
       if ((fill[y][x]===color) && (fill[y+1][x]===color) && (fill[y+2][x]===color) && (fill[y+3][x]===color)) {
         return color
       }
     }
 
+    // Check for horizontal 4 on line
     let temp = [0, 0, 0, ...fill[y], 0, 0, 0]
     if (((temp[x]===color) && (temp[x+1]===color) && (temp[x+2]===color) && (temp[x+3]===color)) ||
       ((temp[x+1]===color) && (temp[x+2]===color) && (temp[x+3]===color) && (temp[x+4]===color)) ||
@@ -32,6 +35,7 @@ function App() {
         return color
       }
     
+    // Check for diagonal 4 on line
     temp = [0, 0, 0, ...fill[y], 0, 0, 0]
 
   }
