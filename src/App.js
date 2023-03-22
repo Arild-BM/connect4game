@@ -36,7 +36,14 @@ function App() {
       }
     
     // Check for diagonal 4 on line
-    temp = [0, 0, 0, ...fill[y], 0, 0, 0]
+    if ((x+y >= 3) && (x+y <= 8)) {
+      temp = [0, 0, 0]
+      for (let i = (x+y < 5 ? x+y : 5) ; (x+y <= 6) ? 0 : (x+y===7) ? 1 : 2 ; i-- ) {
+        temp.push(fill[i][x+y-i])
+      }
+      temp.push(...[0, 0, 0])
+      console.log(temp)
+    }
 
   }
 
