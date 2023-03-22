@@ -2,7 +2,7 @@ import {useState} from "react"
 import Header from "./components/Header"
 
 let color = 1
-
+let temp = []
 
 function App() {
   const [fall, setFall] = useState(false)
@@ -13,16 +13,27 @@ function App() {
                                     [0, 0, 0, 0, 0, 0, 0],
                                     [0, 0, 0, 0, 0, 0, 0],
                                     [0, 0, 0, 0, 0, 0, 0]])
-  const [winner, setWinner] = useState("")
+  // const [winner, setWinner] = useState(0)
   const x = [1,1,1,1,1,1,1]
   const y = [1,1,1,1,1,1]
 
   function won(x, y, color) {
-    if (color === 1) {
-      // if (fill[y][x]===1)
-    } else {
-
+    if (y<=2) {
+      if ((fill[y][x]===color) && (fill[y+1][x]===color) && (fill[y+2][x]===color) && (fill[y+3][x]===color)) {
+        return color
+      }
     }
+
+    let temp = [0, 0, 0, ...fill[y], 0, 0, 0]
+    if (((temp[x]===color) && (temp[x+1]===color) && (temp[x+2]===color) && (temp[x+3]===color)) ||
+      ((temp[x+1]===color) && (temp[x+2]===color) && (temp[x+3]===color) && (temp[x+4]===color)) ||
+      ((temp[x+2]===color) && (temp[x+3]===color) && (temp[x+4]===color) && (temp[x+5]===color)) ||
+      ((temp[x+3]===color) && (temp[x+4]===color) && (temp[x+5]===color) && (temp[x+6]===color))) {
+        return color
+      }
+    
+    temp = [0, 0, 0, ...fill[y], 0, 0, 0]
+
   }
 
 
@@ -48,11 +59,12 @@ function App() {
                   </div>
                   <div className = {fill[indexY][indexX] ? fill[indexY][indexX] === 1 ? "circle yellow" : "circle red" : "circle"}
                         onClick = {() => {
-                          if (((indexY === 5) && !fill[indexY][indexX]) || (((fill[indexY+1][indexX] > 0) && !fill[indexY][indexX]))) {
-                            let temp = fill
+                          if (((indexY === 5) && !fill[indexY][indexX]) || (((indexY<5) && (fill[indexY+1][indexX]) && !fill[indexY][indexX]))) {
+                            temp = [...fill]
                             temp[indexY][indexX] = color
                             setFill([...temp])
-                            won(indexX, indexY, color)
+                            
+                            console.log(won(indexX, indexY, color))
                             color === 1 ? color = 2 : color = 1
                           }
                         }}>
