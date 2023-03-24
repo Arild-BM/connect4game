@@ -15,6 +15,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--color-background-light);
+  min-width: 500px;
 }
 
 header {
@@ -64,26 +65,26 @@ header {
 }
 
 main {
-  height: 60vh;
-}
-
-.main-page {
+  height: 60%;
   display: flex;
   justify-content: center;
 }
 
 .main-frame {
   border: 2px black solid;
+  border-bottom: 10px black solid;
   border-radius: 20px;
   overflow: hidden;
   display: flex;
+  position: relative;
+  z-index: 1;
 }
 
 .circle {
   position: relative;
-  width: 4em;                   /* the div size */
-  height: 4em;                  /* the div size */
-  overflow: hidden;               /* hide the excess of the mask border */
+  width: 4em;
+  height: 4em;
+  overflow: hidden;
   background-color: transparent;
 }
 
@@ -97,50 +98,74 @@ main {
 
 .white-mask {
   position: absolute;
-  top: -1em;                     /* minus half the div size */
-  left: -1em;                    /* minus half the div size */
-  width: 3em;                   /* the div size */
-  height: 3em;                  /* the div size */
+  top: -1em;
+  left: -1em;
+  width: 3em;
+  height: 3em;
   background-color: transparent;
-  border-radius: 3em;           /* the div size */
-  border: 1.5em solid white;     /* half the div size */
-  pointer-events: none;           /* send mouse events beneath this layer */
+  border-radius: 3em;
+  border: 1.5em solid white;
+  pointer-events: none;
 }
 
-.blue {
-  width: 3em;
-  height: 3em;
-  border-radius: 50%;
-  margin: 8px;
-  background-color: var(--color-background-light);
-  position: absolute;
-  top: 131px;
+.player {
+  background-color: var(--color-text);
+  border: 2px black solid;
+  border-bottom: 10px black solid;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  height: 130px;
+  align-items: center;
+  margin: 0 30px;
+  text-transform: uppercase;
+  border-radius: 15px;
+  position: relative;
 }
 
-.circle-a {
-  width: 3em;
-  height: 3em;
-  border-radius: 50%;
-  margin: 8px;
+.player1 {
   background-color: var(--color-a);
+}
+
+.player2 {
+  background-color: var(--color-b);
+  transform: scaleX(-1);
+}
+
+img {
   position: absolute;
-  top: 131px;
+  width: 40px;
+  border-radius: 50%;
+  top: -20px;
 }
 
-.circle-fall {
-  top: 510px;
-  animation: movedown 1s ease-in;
+h1 {
+  font-size: 3em;
+  margin-top: 0px;
 }
 
-@keyframes movedown {
-  from {top: 131px;}
-  to {top: 510px;}
+h2 {
+  font-size: 1em;
+  margin-top: 30px;
 }
 
 footer {
-  width: 100vw;
-  height: 20vh;
+  width: 100%;
+  height: 10vh;
   background-color: var(--color-background-dark);
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
+  position: absolute;
+  bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .main-page {
+    order: 1;
+  }
+
+  main {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
 }
