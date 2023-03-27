@@ -1,8 +1,8 @@
 import smiley from "../images/smiley.svg"
 
-function Player({classN, player, points}) {
+function Player({classN, player, points, rules}) {
     return (
-        <div className = "player">
+        !rules && <div className = "player">
             <img className = {classN} src = {smiley} alt="" />
             <h2>{player}</h2>
             <h1>{points}</h1>

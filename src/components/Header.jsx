@@ -1,9 +1,10 @@
-function Header({restart, setFill, setGameover}) { 
+function Header({timer, setTimer, rules, setRules}) {
+
     return (
         <header key = "1">
             <div key = "2" className = "app-header">
                 <p key = "3" className = "button"
-                    onClick = {() => console.log("HEI")}>MENU</p>
+                    onClick = {() => setRules(!rules) }>RULES</p>
                 <div key = "4" className = "logo">
                     <div key = "5" className = "line">
                         <div key = "6" className = "ball ball-a"></div>
@@ -16,9 +17,8 @@ function Header({restart, setFill, setGameover}) {
                 </div>
                 <p key = "11" className = "button"
                     onClick = {() => {
-                        setFill(restart)
-                        setGameover(false)
-                    }}>RESTART</p>
+                        setTimer(!timer)
+                    }}>Timer on/off</p>
             </div>
         </header>
     )
