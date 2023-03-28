@@ -35,10 +35,15 @@ header {
   font-size: 1rem;
   font-weight: 700;
   padding: 0.5em;
-  width: 7em;
+  width: 8em;
   background-color: var(--color-background-dark);
   border-radius: 50px;
   cursor: pointer;
+  box-sizing: border-box;
+}
+
+.active {
+  border: 2px red solid;
 }
 
 .ball {
@@ -209,8 +214,8 @@ footer {
 }
 
 .counter {
-  border-top-right-radius: 2px;
-  border-top-left-radius: 2px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
   border-top: 0;
   width: 180px;
   height: 100px;
@@ -218,7 +223,7 @@ footer {
 }
 
 .triangle {
-  width: 87.8px;
+  width: 87.5px;
   height: 88px;
   transform: skew(25deg, 25deg);
   rotate: 135deg;
@@ -226,7 +231,7 @@ footer {
   border-radius: 3px;
   border-width: 0 0 2px 2px;
   z-index: -1;
-  top: -98px;
+  top: -95.7px;
   background-color: whitesmoke;
 }
 

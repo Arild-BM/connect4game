@@ -26,6 +26,7 @@ function App() {
   const [color, setColor] = useState(starter)
   const [timer, setTimer] = useState(true)
   const [rules, setRules] = useState(false)
+  const [start, setStart] = useState(false)
     
   const x = [1,1,1,1,1,1,1]
   const y = [1,1,1,1,1,1]
@@ -100,7 +101,7 @@ function App() {
                 <div key = {indexY}>
                   <div key ="b" className = {fill[indexY][indexX] ? fill[indexY][indexX] === 1 ? "circle red" : "circle yellow" : "circle"}
                         onClick = {() => {
-                          if (!gameover && (((indexY === 5) && !fill[indexY][indexX]) || (((indexY<5) && (fill[indexY+1][indexX]) && !fill[indexY][indexX])))) {
+                          if (start && !gameover && (((indexY === 5) && !fill[indexY][indexX]) || (((indexY<5) && (fill[indexY+1][indexX]) && !fill[indexY][indexX])))) {
                             if (newStartColor) {
                               setNewStartColor(false)
                               starter === 1 ? starter = 2 : starter = 1
@@ -124,7 +125,7 @@ function App() {
             ))}
           </div>
           {gameover && <Gameover rules = {rules} color = {color} restart = {restart} setFill = {setFill} setGameover = {setGameover} setNewStartColor = {setNewStartColor} timeoutcounter = {timeoutcounter} setTimeoutcounter = {setTimeoutcounter}/>}
-          <Counter rules = {rules} timer = {timer} setTimer = {setTimer} gameover = {gameover} setGameover = {setGameover} color = {color} setColor = {setColor} setTimeoutcounter = {setTimeoutcounter} setPointA = {setPointA} setPointB = {setPointB} />
+          <Counter rules = {rules} timer = {timer} gameover = {gameover} setGameover = {setGameover} color = {color} setColor = {setColor} setTimeoutcounter = {setTimeoutcounter} setPointA = {setPointA} setPointB = {setPointB} start = {start} setStart = {setStart} />
           <Rules rules = {rules} />
         </div>
         <Player key="player2" classN = "player2" player = "Player 2" points = {pointB} rules = {rules} ></Player>

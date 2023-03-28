@@ -4,7 +4,7 @@ let i = 15;
 
 setInterval(() => i--, 1000)
 
-function Counter({rules, timer, setTimer, gameover, setGameover, color, setColor, setTimeoutcounter, setPointA, setPointB}) {
+function Counter({rules, timer, gameover, setGameover, color, setColor, setTimeoutcounter, setPointA, setPointB, start, setStart}) {
 
     const [counter, setCounter] = useState(15)
     
@@ -13,7 +13,7 @@ function Counter({rules, timer, setTimer, gameover, setGameover, color, setColor
             if (timer) {
                 setCounter(i);
             }
-            if ((i<0) && (!gameover) && (!rules)) {
+            if ((i<0) && (!gameover) && (!rules) && (start)) {
                 setGameover(true)
                 setTimeoutcounter(true)
                 if (color === 2) {setPointA(prev => prev + 1)}
@@ -29,15 +29,20 @@ function Counter({rules, timer, setTimer, gameover, setGameover, color, setColor
         i = 15
         setCounter(i);
         // eslint-disable-next-line
-    }, [color, gameover]);
+    }, [color, gameover, start, timer]);
 
     
-    if (!gameover && timer && !rules) {
+    if (!gameover && !rules) {
         return (
             <div className = {color === 1 ? "counter counter-red" : "counter counter-yellow"}>
                 <div className = {color === 1 ? "triangle counter-red" : "triangle counter-yellow"}></div>
-                <h3 key = "1">Player {color}'s turn</h3>
-                <h1 key = "2">{counter}</h1>
+                {start && <h3 key = "1">Player {color}'s turn</h3>}
+                {start && timer && <h1 key = "2">{counter}</h1>}
+                {!start && <div><br /><p key = "11" className = "button"
+                    onClick = {() => {
+                        setStart(true)
+                    }}>Start game</p>
+                    </div>}
             </div>
         )
     }
