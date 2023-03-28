@@ -13,7 +13,7 @@ function Counter({rules, timer, gameover, setGameover, color, setColor, setTimeo
             if (timer) {
                 setCounter(i);
             }
-            if ((i<0) && (!gameover) && (!rules) && (start)) {
+            if ((i<0) && !gameover && !rules && start) {
                 setGameover(true)
                 setTimeoutcounter(true)
                 if (color === 2) {setPointA(prev => prev + 1)}
@@ -38,7 +38,7 @@ function Counter({rules, timer, gameover, setGameover, color, setColor, setTimeo
                 <div className = {color === 1 ? "triangle counter-red" : "triangle counter-yellow"}></div>
                 {start && <h3 key = "1">Player {color}'s turn</h3>}
                 {start && timer && <h1 key = "2">{counter}</h1>}
-                {!start && <div><br /><p key = "11" className = "button"
+                {!start && <div key = "3"><br key = "4" /><p key = "5" className = "button"
                     onClick = {() => {
                         setStart(true)
                     }}>Start game</p>

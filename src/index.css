@@ -92,6 +92,17 @@ main {
   background-color: transparent;
 }
 
+.circle::before {
+  content: '';
+  width: 2.7em;
+  height: 2.7em;
+  top: 5.5px;
+  left: 5.5px;
+  border: 5px black solid;
+  border-radius: 50%;
+  position: absolute;
+}
+
 .red {
   background-color: var(--color-a);
 }

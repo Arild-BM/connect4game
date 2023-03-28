@@ -8,6 +8,7 @@ import Rules from "./components/Rules"
 let starter = 1
 // let color = starter
 let temp = []
+let winner = 0
 
 function App() {
   const restart = [[0, 0, 0, 0, 0, 0, 0],
@@ -27,7 +28,7 @@ function App() {
   const [timer, setTimer] = useState(true)
   const [rules, setRules] = useState(false)
   const [start, setStart] = useState(false)
-    
+      
   const x = [1,1,1,1,1,1,1]
   const y = [1,1,1,1,1,1]
 
@@ -106,14 +107,16 @@ function App() {
                               setNewStartColor(false)
                               starter === 1 ? starter = 2 : starter = 1
                               setColor(starter);
+                              console.log(starter)
                             }
                             temp = [...fill]
                             temp[indexY][indexX] = color
                             setFill([...temp])
-                            let winner = won(indexX, indexY, color) 
+                            winner = won(indexX, indexY, color)
                             if (winner === 1) {setPointA(prev => prev + 1)}
                             if (winner === 2) {setPointB(prev => prev + 1)}
                             if (winner > 0) {setGameover(true)}
+                            if (!fill[0].includes(0)) {setGameover(true)}
                             !winner && (color === 1 ? setColor(2) : setColor(1))
                           }
                         }}>
@@ -124,7 +127,7 @@ function App() {
             </div>
             ))}
           </div>
-          {gameover && <Gameover rules = {rules} color = {color} restart = {restart} setFill = {setFill} setGameover = {setGameover} setNewStartColor = {setNewStartColor} timeoutcounter = {timeoutcounter} setTimeoutcounter = {setTimeoutcounter}/>}
+          {gameover && <Gameover winner = {winner} rules = {rules} color = {color} restart = {restart} fill = {fill} setFill = {setFill} setGameover = {setGameover} setNewStartColor = {setNewStartColor} timeoutcounter = {timeoutcounter} setTimeoutcounter = {setTimeoutcounter}/>}
           <Counter rules = {rules} timer = {timer} gameover = {gameover} setGameover = {setGameover} color = {color} setColor = {setColor} setTimeoutcounter = {setTimeoutcounter} setPointA = {setPointA} setPointB = {setPointB} start = {start} setStart = {setStart} />
           <Rules rules = {rules} />
         </div>
