@@ -5,8 +5,6 @@ import Gameover from "./components/Gameover"
 import Counter from "./components/Counter"
 import Rules from "./components/Rules"
 
-let starter = 1
-// let color = starter
 let temp = []
 let winner = 0
 
@@ -22,9 +20,7 @@ function App() {
   const [pointB, setPointB] = useState(0)
   const [fill, setFill] = useState(restart)
   const [gameover, setGameover] = useState(false)
-  const [newStartColor, setNewStartColor] = useState(false)
-  const [timeoutcounter, setTimeoutcounter] = useState(false)
-  const [color, setColor] = useState(starter)
+  const [color, setColor] = useState(1)
   const [timer, setTimer] = useState(true)
   const [rules, setRules] = useState(false)
   const [start, setStart] = useState(false)
@@ -100,15 +96,9 @@ function App() {
             <div key = {indexX} >
               {y.map((y, indexY) =>  (
                 <div key = {indexY}>
-                  <div key ="b" className = {fill[indexY][indexX] ? fill[indexY][indexX] === 1 ? "circle red" : "circle yellow" : "circle"}
+                  <div key ="b" className = {fill[indexY][indexX] ? fill[indexY][indexX] === 1 ? "circle red" : "circle yellow" : "circle blue-mask"}
                         onClick = {() => {
                           if (start && !gameover && (((indexY === 5) && !fill[indexY][indexX]) || (((indexY<5) && (fill[indexY+1][indexX]) && !fill[indexY][indexX])))) {
-                            if (newStartColor) {
-                              setNewStartColor(false)
-                              starter === 1 ? starter = 2 : starter = 1
-                              setColor(starter);
-                              console.log(starter)
-                            }
                             temp = [...fill]
                             temp[indexY][indexX] = color
                             setFill([...temp])
@@ -127,12 +117,13 @@ function App() {
             </div>
             ))}
           </div>
-          {gameover && <Gameover winner = {winner} rules = {rules} color = {color} restart = {restart} fill = {fill} setFill = {setFill} setGameover = {setGameover} setNewStartColor = {setNewStartColor} timeoutcounter = {timeoutcounter} setTimeoutcounter = {setTimeoutcounter}/>}
-          <Counter rules = {rules} timer = {timer} gameover = {gameover} setGameover = {setGameover} color = {color} setColor = {setColor} setTimeoutcounter = {setTimeoutcounter} setPointA = {setPointA} setPointB = {setPointB} start = {start} setStart = {setStart} />
+          {gameover && <Gameover fill = {fill} winner = {winner} rules = {rules} color = {color} setColor = {setColor} restart = {restart} setFill = {setFill} setGameover = {setGameover} />}
+          <Counter rules = {rules} timer = {timer} gameover = {gameover} setGameover = {setGameover} color = {color} setColor = {setColor} setPointA = {setPointA} setPointB = {setPointB} start = {start} setStart = {setStart} />
           <Rules rules = {rules} />
         </div>
         <Player key="player2" classN = "player2" player = "Player 2" points = {pointB} rules = {rules} ></Player>
       </main>
+      <footer className = {(color === 1) && gameover ? "red-footer" : (color === 2) && gameover ? "yellow-footer" : ""}></footer>
     </div>
   )
 }

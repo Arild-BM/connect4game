@@ -15,12 +15,14 @@ body {
   letter-spacing: 2px;
 }
 
+/* Header includes buttons and logo */
 header {
   height: 188px;
   display: flex;
   justify-content: center;
 }
 
+/* Spacing of header */
 .app-header {
   display: flex;
   justify-content: space-between;
@@ -28,6 +30,7 @@ header {
   width: 50%;
 }
 
+/* Format of all buttons */
 .button {
   margin: 0px;
   text-align: center;
@@ -42,10 +45,17 @@ header {
   box-sizing: border-box;
 }
 
-.active {
-  border: 2px red solid;
+.button:hover,
+.button:focus {
+  transform: scale(1.1);
 }
 
+/* Red border if button is active */
+.active {
+  border: 2px solid var(--color-a);
+}
+
+/* Logo on top of game */
 .ball {
   width: 1.1em;
   height: 1.1em;
@@ -54,24 +64,29 @@ header {
   border-radius: 50%;
 }
 
+/* Red ball in logo */
 .ball-a {
   background-color: var(--color-a);
 }
 
+/* Green ball in logo */
 .ball-b {
   background-color: var(--color-b);
 }
 
+/* Divide 4 balls in the logo in 2 lines */
 .line {
   display: flex;
 }
 
+/* Main screen with players and game table */
 main {
   height: 60%;
   display: flex;
   justify-content: center;
 }
 
+/* Game table */
 .main-page {
   position: relative;
 }
@@ -84,45 +99,64 @@ main {
   display: flex;
 }
 
+/* Transparent box for each circle */
 .circle {
   position: relative;
   width: 4em;
   height: 4em;
   overflow: hidden;
   background-color: transparent;
+  cursor: pointer;
 }
 
+/* Black circle in eack box */
 .circle::before {
   content: '';
-  width: 2.7em;
-  height: 2.7em;
-  top: 5.5px;
-  left: 5.5px;
-  border: 5px black solid;
+  width: 0;
+  height: 0;
+  top: 15px;
+  left: 9.5px;
+  border: 23px solid transparent;
   border-radius: 50%;
+  outline: 10px black solid;
   position: absolute;
 }
 
+/* Red disc */
 .red {
   background-color: var(--color-a);
 }
 
+.red::before {
+  top: 10px;
+  border-color: var(--color-a);
+}
+
+/* Yellow disc */
 .yellow {
   background-color: var(--color-b);
 }
 
+.yellow::before {
+  top: 10px;
+  border-color: var(--color-b);
+}
+
+/* White border (background) around colored circle */
 .white-mask {
   position: absolute;
-  top: -1em;
-  left: -1em;
-  width: 3em;
-  height: 3em;
+  top: 6.8px;
+  left: 6.8px;
+  width: 2.8em;
+  height: 2.8em;
   background-color: transparent;
   border-radius: 3em;
-  border: 1.5em solid white;
+  border: 0.2em solid black;
+  outline: 1.5em solid white;
   pointer-events: none;
 }
 
+/* Square for each player */
 .player {
   background-color: var(--color-text);
   border: 2px black solid;
@@ -138,15 +172,18 @@ main {
   position: relative;
 }
 
+/* Color of player 1 */
 .player1 {
   background-color: var(--color-a);
 }
 
+/* Color of player 2 and flipped */
 .player2 {
   background-color: var(--color-b);
   transform: scaleX(-1);
 }
 
+/* Placement of player emoji */
 img {
   position: absolute;
   width: 40px;
@@ -156,7 +193,7 @@ img {
 
 h1 {
   font-size: 3em;
-  margin: 0px;
+  margin: 0;
 }
 
 h2 {
@@ -185,6 +222,7 @@ li {
 margin-right: 20px;
 }
 
+/* Colored footer at bottom */
 footer {
   width: 100%;
   height: 10vh;
@@ -196,13 +234,25 @@ footer {
   z-index: -2;
 }
 
+/* Footer is red if red win */
+.red-footer {
+  background-color: var(--color-a);
+}
+
+/* Footer is yellow if yellow win */
+.yellow-footer {
+  background-color: var(--color-b);
+}
+
+/* Game over box */
 .gameover {
   height: 150px;
   width: 300px;
   background-color: var(--color-text);
-  top: 460px;
+  top: 465px;
 }
 
+/* Margin for buton in Game over box */
 .gameover .button {
   margin-top: -10px;
 }
@@ -233,6 +283,7 @@ footer {
   top: 470px;
 }
 
+/* Top triangle of counter */
 .triangle {
   width: 87.5px;
   height: 88px;
@@ -246,6 +297,7 @@ footer {
   background-color: whitesmoke;
 }
 
+/* Rules box */
 .rules {
   position: absolute;
   width: 450px;
@@ -257,16 +309,19 @@ footer {
   text-transform: none;
 }
 
+/* Background color for red counter */
 .counter-red {
   background-color: var(--color-a);
   color: var(--color-text);
 }
 
+/* Background color for yellow counter */
 .counter-yellow {
   background-color: var(--color-b);
   color: black;
 }
 
+/* Placement for small screen resolution */
 @media (max-width: 900px) {
   .main-page {
     order: 1;
@@ -284,5 +339,36 @@ footer {
 
   .rules {
     top: 0;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  .player {
+    width: 180px;
+    height: 90px;
+    align-items: center;
+    margin: -40px 15px 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .player:nth-last-of-type(1) {
+    flex-direction: row-reverse;
+  }
+
+  .player1, .player2 {
+    position: absolute;
+    width: 40px;
+    border-radius: 50%;
+    top: 25px;
+    left: -22px;
+  }
+
+  .player2 {
+    left: 162px;
   }
 }

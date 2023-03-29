@@ -1,35 +1,34 @@
 import { useState, useEffect } from "react"
 
-let i = 15;
+const maxTime = 5
+let i = maxTime;
 
 setInterval(() => i--, 1000)
 
-function Counter({rules, timer, gameover, setGameover, color, setColor, setTimeoutcounter, setPointA, setPointB, start, setStart}) {
+function Counter({rules, timer, gameover, setGameover, color, setColor, setPointA, setPointB, start, setStart}) {
 
     const [counter, setCounter] = useState(15)
     
     useEffect(() => {
         setTimeout(() => {
-            if (timer) {
+            if (timer && !gameover && start) {
                 setCounter(i);
             }
             if ((i<0) && !gameover && !rules && start) {
                 setGameover(true)
-                setTimeoutcounter(true)
                 if (color === 2) {setPointA(prev => prev + 1)}
                 if (color === 1) {setPointB(prev => prev + 1)}
-                if (color === 2) {setColor(1)}
-                if (color === 1) {setColor(2)}
+                (color === 2) ? setColor(1) : setColor(2)
             }
         }, 1000)
         // eslint-disable-next-line
-    }, [i]);
+    });
 
     useEffect(() => {
-        i = 15
+        i = maxTime
         setCounter(i);
         // eslint-disable-next-line
-    }, [color, gameover, start, timer]);
+    }, [color, gameover, start, timer, rules]);
 
     
     if (!gameover && !rules) {
