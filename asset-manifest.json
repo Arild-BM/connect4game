@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/connect4game/static/css/main.bc93b1d4.css",
-    "main.js": "/connect4game/static/js/main.cd9b8368.js",
+    "main.js": "/connect4game/static/js/main.e4a19886.js",
     "static/media/smiley.svg": "/connect4game/static/media/smiley.dcdf2dedde91e2901748ec0c64a4ffe1.svg",
     "index.html": "/connect4game/index.html",
     "main.bc93b1d4.css.map": "/connect4game/static/css/main.bc93b1d4.css.map",
-    "main.cd9b8368.js.map": "/connect4game/static/js/main.cd9b8368.js.map"
+    "main.e4a19886.js.map": "/connect4game/static/js/main.e4a19886.js.map"
   },
   "entrypoints": [
     "static/css/main.bc93b1d4.css",
-    "static/js/main.cd9b8368.js"
+    "static/js/main.e4a19886.js"
   ]
 }
