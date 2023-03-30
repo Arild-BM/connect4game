@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-const maxTime = 5
+const maxTime = 15
 let i = maxTime;
 
 setInterval(() => i--, 1000)
@@ -9,6 +9,7 @@ function Counter({rules, timer, gameover, setGameover, color, setColor, setPoint
 
     const [counter, setCounter] = useState(15)
     
+    // Count down from 15 sec.
     useEffect(() => {
         setTimeout(() => {
             if (timer && !gameover && start) {
@@ -24,13 +25,14 @@ function Counter({rules, timer, gameover, setGameover, color, setColor, setPoint
         // eslint-disable-next-line
     });
 
+    // Restart countdown
     useEffect(() => {
         i = maxTime
         setCounter(i);
         // eslint-disable-next-line
     }, [color, gameover, start, timer, rules]);
 
-    
+    // Show counter and restart game
     if (!gameover && !rules) {
         return (
             <div className = {color === 1 ? "counter counter-red" : "counter counter-yellow"}>

@@ -1,3 +1,5 @@
+// Show rules
+
 function Rules({rules}) {
     return (
         rules && <div className = "rules">

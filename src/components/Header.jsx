@@ -1,3 +1,5 @@
+// Two buttons and logo in the header
+
 function Header({timer, setTimer, rules, setRules}) {
 
     return (

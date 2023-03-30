@@ -1,4 +1,4 @@
-// Endres løsning
+// Endres løsning, not used
 
 const gameBoard = [
     [0, 0, 0, 0, 0, 0, 0],

@@ -1,5 +1,7 @@
 import smiley from "../images/smiley.svg"
 
+
+// Player boxes with smiley, "name" and points
 function Player({classN, player, points, rules}) {
     return (
         !rules && <div className = "player">

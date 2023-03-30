@@ -92,7 +92,7 @@ main {
 }
 
 .main-frame {
-  border: 2px black solid;
+  border: 3px black solid;
   border-bottom: 10px black solid;
   border-radius: 20px;
   overflow: hidden;
@@ -159,7 +159,7 @@ main {
 /* Square for each player */
 .player {
   background-color: var(--color-text);
-  border: 2px black solid;
+  border: 3px black solid;
   border-bottom: 10px black solid;
   display: flex;
   flex-direction: column;
@@ -262,7 +262,7 @@ footer {
   flex-direction: column;
   position: absolute;
   align-items: center;
-  border: 2px black solid;
+  border: 3px black solid;
   border-bottom: 10px black solid;
   border-radius: 15px;
   margin: auto;
@@ -291,7 +291,7 @@ footer {
   rotate: 135deg;
   border: black solid;
   border-radius: 3px;
-  border-width: 0 0 2px 2px;
+  border-width: 0 0 3px 3px;
   z-index: -1;
   top: -95.7px;
   background-color: whitesmoke;

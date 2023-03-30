@@ -1,6 +1,8 @@
 let starter = 1
 
+// Place game over box and button for new game
 function Gameover({fill, winner, rules, color, setColor, restart, setFill, setGameover}) {
+    // Check if all holes are filled
     if ((winner === undefined) && (!fill[0].includes(0))) {
         setColor(0)
         return (
@@ -15,7 +17,7 @@ function Gameover({fill, winner, rules, color, setColor, restart, setFill, setGa
                         }}>PLAY AGAIN</p>
             </div>
         )
-    } else   
+    } else
     return (
         !rules && <div className = "gameover">
             {(color > 0) && <h3 key = "1">Player {color}</h3>}
