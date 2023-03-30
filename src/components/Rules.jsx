@@ -19,7 +19,7 @@ function Rules({rules}) {
                     slot in each column.
                 </li>
                 <li>The game ends when there is a 4-in-a-row, 
-                    times run out or no free slot.
+                    times run out or no free slots.
                 </li>
                 <li>The starter of the previos game goes 
                     second on the next game.
